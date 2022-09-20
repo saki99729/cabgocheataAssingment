@@ -31,7 +31,7 @@
 
 <div class="container">
   <h2>New Booking</h2>
-  <form action="addbooking" method="post">
+  <form action="updatebooking" method="post">
     <div class="form-group">
       <label for="dname">Name:</label>
       <input type="text" class="form-control" id="dname" placeholder="Enter name" name="dname" value="<%out.print(session.getAttribute("name"));%>">
@@ -62,7 +62,8 @@
     </div>
 
 
-    <input type="hidden" class="form-control" id="action" placeholder="From" name="action" value="cbook">
+    <input type="hidden" class="form-control" id="action" placeholder="From" name="action" value="update">
+    <input type="hidden" class="form-control" id="id" placeholder="From" name="id" value="<%out.print(session.getAttribute("cid"));%>">
     <button type="submit" class="btn btn-default"onclick="myFunction()">Comform the order</button>
   </form>
 </div>

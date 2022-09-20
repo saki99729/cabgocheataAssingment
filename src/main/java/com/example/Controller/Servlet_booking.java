@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "Servlet_booking", value = {"/Servlet_booking","/addbooking","/deletebooking"})
+@WebServlet(name = "Servlet_booking", value = {"/Servlet_booking","/addbooking","/deletebooking","/updatebooking"})
 public class Servlet_booking extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -63,8 +63,39 @@ public class Servlet_booking extends HttpServlet {
         }else if(action.equals("dview"))
         {
                 delbook(request,response);
+        } else if (action.equals("update")) {
+        updatBooking(request,response);
         }
-    
+
+    }
+
+    private void updatBooking(HttpServletRequest request, HttpServletResponse response) {
+        String message="";
+        Booking booking = new Booking();
+        booking.setDname(request.getParameter("dname"));
+        booking.setDnbr(request.getParameter("dpnbr"));
+        booking.setAmount(Double.parseDouble(request.getParameter("amount")));
+        booking.setTo(request.getParameter("cto"));
+        booking.setFrom(request.getParameter("cfrom"));
+        booking.setCpnber(request.getParameter("cnbr"));
+        booking.setCname(request.getParameter("cname"));
+        booking.setId(Integer.parseInt(request.getParameter("id")));
+
+        BookingService service = new BookingService();
+        try {
+            boolean result =service.updateBooking(booking);
+            if(result)
+            {
+                message = " record deleted";
+            }
+            else {
+                message="somthing wrong";
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void delbook(HttpServletRequest request, HttpServletResponse response) throws IOException {

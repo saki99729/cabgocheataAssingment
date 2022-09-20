@@ -113,4 +113,25 @@ public class BookingManage {
         }
             return booking;
     }
+
+    public static boolean updateBooking(Booking booking) throws SQLException, ClassNotFoundException {
+        GetConnection conncector = new Database();
+        Connection connection = conncector.connection();
+
+        String query="update cabtest.booking set cname=? ,cnbr=?,toLocation=?,fromLocation=?,dname=?,dnbr=?,status='Conform',amount=? where id=?";
+        PreparedStatement ps  = connection.prepareStatement(query);
+
+        //insert variables
+        ps.setString(1, booking.getCname());
+        ps.setString(2, booking.getCpnber());
+        ps.setString(3, booking.getTo());
+        ps.setString(4, booking.getFrom());
+        ps.setString(5, booking.getDname());
+        ps.setString(6, booking.getDnbr());
+        ps.setDouble(7, booking.getAmount());
+        ps.setInt(8,booking.getId());
+
+        boolean result =ps.executeUpdate()>0;
+        return result;
+    }
 }

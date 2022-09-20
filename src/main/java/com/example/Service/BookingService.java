@@ -23,4 +23,8 @@ public class BookingService {
     public static Booking getview(int id) throws SQLException, ClassNotFoundException {
         return BookingManage.getview(id);
     }
+
+    public static boolean updateBooking(Booking booking) throws SQLException, ClassNotFoundException {
+        return BookingService.updateBooking(booking);
+    }
 }

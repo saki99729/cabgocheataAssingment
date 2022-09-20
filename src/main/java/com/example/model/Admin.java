@@ -7,6 +7,11 @@ public class Admin extends Register {
     private String lisence;
     private int id;
     public Admin() {
+
+    }
+
+    public Admin(String uname, String pass) {
+        super(uname, pass);
     }
 
     public String getLisence() {
@@ -27,8 +32,14 @@ public class Admin extends Register {
         this.id = id;
     }
 
-    public Admin(String uname, String pass, String jrole, String name, String tnbr, String lisence, int id) {
-        super(uname, pass, jrole);
+    public Admin(String name, String tnbr, String lisence) {
+        this.name = name;
+        this.tnbr = tnbr;
+        this.lisence = lisence;
+    }
+
+    public Admin(String uname, String pass, String name, String tnbr, String lisence, int id) {
+        super(uname, pass);
         this.name = name;
         this.tnbr = tnbr;
         this.lisence = lisence;

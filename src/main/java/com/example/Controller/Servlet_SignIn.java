@@ -1,5 +1,6 @@
 package com.example.Controller;
 
+import com.example.Service.AdminService;
 import com.example.Service.DriverService;
 import com.example.Service.VehicleService;
 import com.example.Service.customerService;
@@ -12,7 +13,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "Servlet_SignIn", value = {"/Servlet_SignIn","/driver_SignIn","/registervehic"})
+@WebServlet(name = "Servlet_SignIn", value = {"/Servlet_SignIn","/driver_SignIn","/registervehic","/admin"})
 public class Servlet_SignIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +30,40 @@ public class Servlet_SignIn extends HttpServlet {
                     Drv(request, response);
                 } else if (action.equals("vehicle")) {
                     vehicle(request,response);
+                } else if (action.equals("ad")) {
+                    admin(request,response);
                 }
+    }
+
+    private void admin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String message = "";
+        Admin admin = new Admin();
+        admin.setUname(request.getParameter("uname"));
+        admin.setPass(request.getParameter("pass"));
+        admin.setName(request.getParameter("name"));
+        admin.setTnbr(request.getParameter("pnbr"));
+
+        System.out.println(admin.getUname()+""+admin.getPass()+""+admin.getName()+""+admin.getTnbr() );
+
+        AdminService service = new AdminService();
+
+        boolean result = false;
+        try {
+            result = service.RegisterAdmin(admin);
+            if(result)
+            {
+                message="Driver Registation successfull";
+            }else {
+                message="Driver Registation unsuccessfull";
+            }
+            request.setAttribute("message",message);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        RequestDispatcher rd = request.getRequestDispatcher("adminRegister.jsp");
+        rd.forward(request,response);
     }
 
     private void vehicle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

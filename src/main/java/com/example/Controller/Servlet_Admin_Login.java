@@ -47,6 +47,13 @@ public class Servlet_Admin_Login extends HttpServlet {
                session.putValue("lisence",admin.getLisence());
                response.sendRedirect("DriverDash.jsp");
                
+           } else if (admin.getJrole().equals("Ad")) {
+               HttpSession session = request.getSession();
+               session.putValue("uname",admin.getUname());
+               session.putValue("name",admin.getName());
+               session.putValue("tpnbr",admin.getTnbr());
+
+               response.sendRedirect("adminDash.jsp");
            }
         } catch (SQLException e) {
             throw new RuntimeException(e);

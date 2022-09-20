@@ -25,6 +25,6 @@ public class BookingService {
     }
 
     public static boolean updateBooking(Booking booking) throws SQLException, ClassNotFoundException {
-        return BookingService.updateBooking(booking);
+       return BookingManage.updateBooking(booking);
     }
 }

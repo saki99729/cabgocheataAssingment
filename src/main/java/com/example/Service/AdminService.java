@@ -9,4 +9,8 @@ public class AdminService {
     public static Admin loginAdmin(String username, String password) throws SQLException, ClassNotFoundException {
         return AdminManage.loginAdmin(username, password);
     }
+
+    public static boolean RegisterAdmin(Admin admin) throws SQLException, ClassNotFoundException {
+        return AdminManage.RegisterAdmin(admin);
+    }
 }

@@ -10,6 +10,9 @@ public class Register {
     public Register() {
     }
 
+    public Register(String uname, String pass) {
+    }
+
     public Register(String uname, String pass ,String jrole) {
         this.uname = uname;
         this.pass = pass;

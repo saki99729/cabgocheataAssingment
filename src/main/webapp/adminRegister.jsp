@@ -27,30 +27,25 @@
 
 
 <div class="container">
-  <h2>Register Driver</h2>
-  <form action="driver_SignIn" method="post">
+  <h2>New Booking</h2>
+  <form action="admin" method="post">
     <div class="form-group">
       <label for="uname">username:</label>
       <input type="text" class="form-control" id="uname" placeholder="Enter name" name="uname" value="">
     </div>
     <div class="form-group">
       <label for="pass">Password:</label>
-      <input type="text" class="form-control" id="pass" placeholder="Enter password" name="pass" value="">
+      <input type="text" class="form-control" id="pass" placeholder="Enter number" name="pass" value="">
     </div>
     <div class="form-group">
       <label for="name">name:</label>
-      <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+      <input type="text" class="form-control" id="name" placeholder="To" name="name">
     </div>
     <div class="form-group">
       <label for="pnbr">phone Number:</label>
-      <input type="text" class="form-control" id="pnbr" placeholder="Enter phone number" name="pnbr">
+      <input type="text" class="form-control" id="pnbr" placeholder="From" name="pnbr">
     </div>
-
-    <div class="form-group">
-      <label for="license">License:</label>
-      <input type="text" class="form-control" id="license" placeholder="Enter license number" name="license">
-    </div>
-    <input type="hidden" class="form-control" id="action" placeholder="From" name="action" value="Dri">
+    <input type="hidden" class="form-control" id="action" placeholder="From" name="action" value="ad">
     <button type="submit" class="btn btn-default"onclick="myFunction()">Register</button>
   </form>
 </div>

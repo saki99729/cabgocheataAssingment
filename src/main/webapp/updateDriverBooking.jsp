@@ -58,11 +58,11 @@
     </div>
     <div class="form-group">
       <label for="amount">From:</label>
-      <input type="number" class="form-control" id="amount" placeholder="amount" name="amount" value="<%out.print(session.getAttribute("cfrom"));%>">
+      <input type="number" class="form-control" id="amount" placeholder="amount" name="amount" value="">
     </div>
 
 
-    <input type="hidden" class="form-control" id="action" placeholder="From" name="action" value="update">
+    <input type="hidden" class="form-control" id="action"  name="action" value="update">
     <input type="hidden" class="form-control" id="id" placeholder="From" name="id" value="<%out.print(session.getAttribute("cid"));%>">
     <button type="submit" class="btn btn-default"onclick="myFunction()">Comform the order</button>
   </form>

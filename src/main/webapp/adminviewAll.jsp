@@ -45,14 +45,14 @@
                 out.print("<td>"+booking.getJrole()+"</td>");
                 out.print("<td>"+booking.getTnbr()+"</td>");
 
-
+/*
                 out.print("<td>");
                 out.print("<form action=\"Servlet_BookAll\" method=\"get\">");
                 out.print("<input type=\"hidden\" name=\"id\"  id=\"id\" value="+booking.getId()+">");
                 out.print("<input type=\"hidden\" name=\"action\" value=\"single\">");
                 out.print("<button type=\"submit\" style='font-size:18px' class=\"btn btn-link\"> <i class='far fa-arrow-alt-circle-right'></i></button>");
                 out.print ("</td>");
-
+*/
             }
         %>
 

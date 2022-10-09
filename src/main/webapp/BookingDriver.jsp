@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.model.Booking" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.model.Admin" %><%--
   Created by IntelliJ IDEA.
   User: sakil
   Date: 9/20/2022
@@ -9,10 +10,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%if(session.getAttribute("uname")==null)
-{
-    response.sendRedirect("index.jsp");
-}%>
+
 <html>
 <head>
     <title>Customer Dash</title>
@@ -60,12 +58,18 @@
                 }
                 out.print("</td>");
                 out.print("<td>"+booking.getAmount()+"</td>");
-                out.print("<td>");
-                out.print("<form action=\"Servlet_BookAll\" method=\"get\">");
-                out.print("<input type=\"hidden\" name=\"id\"  id=\"id\" value="+booking.getId()+">");
-                out.print("<input type=\"hidden\" name=\"action\" value=\"single\">");
-                out.print("<button type=\"submit\" style='font-size:18px' class=\"btn btn-link\"> <i class='far fa-arrow-alt-circle-right'></i></button>");
-                out.print ("</td>");
+        if(session.getValue("role")=="Ad")
+        {
+
+        }else {
+            out.print("<td>");
+            out.print("<form action=\"Servlet_BookAll\" method=\"get\">");
+            out.print("<input type=\"hidden\" name=\"id\"  id=\"id\" value="+booking.getId()+">");
+            out.print("<input type=\"hidden\" name=\"action\" value=\"single\">");
+            out.print("<button type=\"submit\" style='font-size:18px' class=\"btn btn-link\"> <i class='far fa-arrow-alt-circle-right'></i></button>");
+            out.print ("</td>");
+        }
+
 
             }
         %>

@@ -24,7 +24,27 @@ public class Servlet_booking extends HttpServlet {
     }
 
     private void Dgetall(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
+        String cname=session.getValue("name").toString();
+        Booking booking = new Booking();
+        booking.setCname(cname);
+        BookingService service = new BookingService();
+        System.out.println(booking.getCname());
+        try {
+            List<Booking>bookings = service.bookingsList(booking);
+            if(bookings.isEmpty())
+            {
+                System.out.println("No Records founds");
+            }else {
+                request.setAttribute("bookingList",bookings);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        RequestDispatcher rd = request.getRequestDispatcher("BookingDriver.jsp");
+        rd.forward(request,response);
     }
 
     private void Cgetall(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,7 +68,7 @@ public class Servlet_booking extends HttpServlet {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        RequestDispatcher rd = request.getRequestDispatcher("BookingDriver.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("cusBookView.jsp");
         rd.forward(request,response);
 
 
@@ -69,7 +89,7 @@ public class Servlet_booking extends HttpServlet {
 
     }
 
-    private void updatBooking(HttpServletRequest request, HttpServletResponse response) {
+    private void updatBooking(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String message="";
         Booking booking = new Booking();
         booking.setDname(request.getParameter("dname"));
@@ -96,6 +116,10 @@ public class Servlet_booking extends HttpServlet {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+        request.setAttribute("message",message);
+        RequestDispatcher rd =request.getRequestDispatcher("updateDriverBooking.jsp");
+        rd.forward(request,response);
     }
 
     private void delbook(HttpServletRequest request, HttpServletResponse response) throws IOException {

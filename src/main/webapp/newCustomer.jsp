@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>New Booking</title>
+    <title>New Registation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
 
 
 <div class="container">
-    <h2>New Booking</h2>
+    <h2>New Registation</h2>
     <form action="Servlet_SignIn" method="post">
         <div class="form-group">
             <label for="uname">username:</label>
@@ -35,7 +35,7 @@
         </div>
         <div class="form-group">
             <label for="pass">Password:</label>
-            <input type="text" class="form-control" id="pass" placeholder="Enter number" name="pass" value="">
+            <input type="password" class="form-control" id="pass" placeholder="Enter password" name="pass" value="">
         </div>
         <div class="form-group">
             <label for="name">name:</label>

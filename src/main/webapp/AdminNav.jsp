@@ -21,16 +21,16 @@
                     <a class="nav-link" href="">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/demo_war_exploded/Servlet_dataview?action=all">Admin List</a>
+                    <a class="nav-link" href="">Admin List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/demo_war_exploded/Servlet_BookAll?action=all">All Bookings</a>
+                    <a class="nav-link" href="/demo_war_exploded/Servlet_BookAll?action=allBook">All Bookings</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Manage Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Log out</a></li>
+                        <li><a class="dropdown-item" href="/demo_war_exploded/Servlet_dataview?action=all">Customer Details</a></li>
+                        <li><a class="dropdown-item" href="/demo_war_exploded/Servlet_dataview?action=Dll">Driver Details</a></li>
 
 
 

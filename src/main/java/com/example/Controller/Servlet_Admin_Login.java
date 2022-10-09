@@ -38,6 +38,8 @@ public class Servlet_Admin_Login extends HttpServlet {
                session.putValue("uname",admin.getUname());
                session.putValue("name",admin.getName());
                session.putValue("tpnbr",admin.getTnbr());
+               session.putValue("role",admin.getJrole());
+
                response.sendRedirect("CustomerDash.jsp");
            } else if (admin.getJrole().equals("Dr")) {
                HttpSession session = request.getSession();
@@ -45,6 +47,7 @@ public class Servlet_Admin_Login extends HttpServlet {
                session.putValue("name",admin.getName());
                session.putValue("tpnbr",admin.getTnbr());
                session.putValue("lisence",admin.getLisence());
+               session.putValue("role",admin.getJrole());
                response.sendRedirect("DriverDash.jsp");
                
            } else if (admin.getJrole().equals("Ad")) {
@@ -52,6 +55,7 @@ public class Servlet_Admin_Login extends HttpServlet {
                session.putValue("uname",admin.getUname());
                session.putValue("name",admin.getName());
                session.putValue("tpnbr",admin.getTnbr());
+               session.putValue("role",admin.getJrole());
 
                response.sendRedirect("adminDash.jsp");
            }

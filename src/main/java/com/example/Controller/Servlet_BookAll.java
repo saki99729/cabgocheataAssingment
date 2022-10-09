@@ -16,14 +16,17 @@ public class Servlet_BookAll extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        if(action.equals("all"))
-        {
-            getall(request,response);
+        if(action.equals("all")) {
+            getall(request, response);
+        } else if (action.equals("allBook")) {
+            getallBook(request,response);
+
+
         }else {
             getbook(request,response);
         }
     }
-
+//update Booking
     private void getbook(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String message = "";
         int id =Integer.parseInt(request.getParameter("id"));
@@ -50,7 +53,7 @@ public class Servlet_BookAll extends HttpServlet {
         response.sendRedirect("updateDriverBooking.jsp");
 
     }
-
+//booking Driver
     private void getall(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookingService service = new BookingService();
         try {
@@ -62,7 +65,24 @@ public class Servlet_BookAll extends HttpServlet {
             throw new RuntimeException(e);
         }
         RequestDispatcher rd = request.getRequestDispatcher("BookingDriver.jsp");
+        RequestDispatcher Ad = request.getRequestDispatcher("AllBooking.jsp");
         rd.forward(request,response);
+        Ad.forward(request,response);
+    }
+
+    private void getallBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        BookingService service = new BookingService();
+        try {
+            List<Booking>bookings = service.bookingsListDriver();
+            request.setAttribute("bookingList",bookings);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        RequestDispatcher Ad = request.getRequestDispatcher("AllBooking.jsp");
+
+        Ad.forward(request,response);
     }
 
     @Override
